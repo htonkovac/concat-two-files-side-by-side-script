@@ -1,13 +1,14 @@
 <?php
-$files1 = file('file1.txt'); // read file1.txt
-$files2 = file('file2.txt'); // read file2.txt
+$file1 = file('ids'); // read file2.txt
+$file2 = file('colors'); // read file2.txt
 // Assuming both files have equal amount of rows.
-for($x = 0; $x < count($files1); $x++) {
-  $files1[$x] = str_replace(array("\n", "\r"), "", $files1[$x]);
-  $files3[$x] = $files1[$x]." ".$files2[$x];
+for ($x = 0; $x < count($file1); $x++) {
+    $file1[$x] = str_replace(array("\n", "\r"), "", $file1[$x]);
+    $file2[$x] = str_replace(array("\n", "\r"), "", $file2[$x]);
+
+    $files3[$x] = $file1[$x] . $file2[$x];
 }
-$result = implode("", $files3); // combines the array to a single string.
-if(file_put_contents('file3.txt', $result)) { // puts the imploded string into file3.txt
-  echo "Writing to file 'file3.txt' was successfull.";
+$result = implode("\n", $files3); // combines the array to a single string.
+if (file_put_contents('file3.txt', $result)) { // puts the imploded string into file3.txt
+    echo "Writing to file 'file3.txt' was successfull.";
 }
-?>
